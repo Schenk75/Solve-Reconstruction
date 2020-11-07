@@ -7,16 +7,17 @@ def init_db(srDB):
     cursor = conn.cursor()
     cursor.execute('''CREATE TABLE solveTable (
                         scramble text primary key,
-                        time text not null,
-                        date text not null,
-                        inspection text not null,
-                        f2l1 text not null,
-                        f2l2 text not null,
-                        f2l3 text not null,
-                        f2l4 text not null,
-                        oll text not null,
-                        pll text not null,
-                        auf text not null,
+                        time text,
+                        date text,
+                        inspection text,
+                        cross text,
+                        f2l1 text,
+                        f2l2 text,
+                        f2l3 text,
+                        f2l4 text,
+                        oll text,
+                        pll text,
+                        auf text,
                         etm text,
                         tps text
                     );''')

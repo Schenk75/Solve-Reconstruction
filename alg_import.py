@@ -37,8 +37,7 @@ class Alg_window(BasicWindow, Ui_AlgWindow):
                 btn, GRAY_COLOR)
             Qss += '#%s:hover{background-color:%s; border-radius:0;}' % (
                 btn, LIGHT_FUNC_COLOR)
-            eval(f'self.{btn}').setCursor(
-                QCursor(Qt.PointingHandCursor))  # 鼠标悬停按钮上时变小手
+            eval(f'self.{btn}').setCursor(QCursor(Qt.PointingHandCursor))  # 鼠标悬停按钮上时变小手
         Qss += global_css()
         self.setStyleSheet(Qss)  # 边框部分qss重载
 
@@ -89,6 +88,7 @@ class Alg_window(BasicWindow, Ui_AlgWindow):
         self.info.show()
 
         conn.close()
+        self.doClose()
 
 
     def init_table(self, table_name):
@@ -117,6 +117,7 @@ class Alg_window(BasicWindow, Ui_AlgWindow):
                 item = QTableWidgetItem()
                 icon = QIcon(f"{ABSOLUTE_PATH}\\img\\oll\\oll{i}.svg")
                 item.setIcon(QIcon(icon))
+                item.setFlags(QtCore.Qt.ItemIsSelectable | QtCore.Qt.ItemIsEnabled)  # 设置不可编辑
                 self.oll_table.setItem(i-1, 0, item)
         else:
             row_count = 21
@@ -141,11 +142,13 @@ class Alg_window(BasicWindow, Ui_AlgWindow):
                     item1 = QTableWidgetItem()
                     item1.setFont(QFont('Microsoft YaHei', 12, QFont.Black))
                     item1.setText(f.split(".")[0])
+                    item1.setFlags(QtCore.Qt.ItemIsSelectable | QtCore.Qt.ItemIsEnabled)  # 设置不可编辑
                     self.pll_table.setItem(i, 0, item1)
 
                     item2 = QTableWidgetItem()
                     icon = QIcon(f"{ABSOLUTE_PATH}\\img\\pll\\{f}")
                     item2.setIcon(QIcon(icon))
+                    item2.setFlags(QtCore.Qt.ItemIsSelectable | QtCore.Qt.ItemIsEnabled)  # 设置不可编辑
                     self.pll_table.setItem(i, 1, item2)
                     i += 1
         self.alg_show(table_name)
