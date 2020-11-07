@@ -2,4 +2,4 @@
 __pycache__
 .vs
 test.py
-srDB.db
+*.db
