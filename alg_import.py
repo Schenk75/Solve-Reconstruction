@@ -6,6 +6,8 @@ from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from global_setting import *
+from utils.FramelessDialog import *
+from utils.Notification import *
 from UI.Ui_alg_import import *
 
 srDB = "./srDB.db"
@@ -67,7 +69,27 @@ class Alg_window(BasicWindow, Ui_AlgWindow):
     def save_db(self):
         """将表格内容保存到数据库
         """
-        print('save')
+        conn = sqlite3.connect(srDB)
+        cursor = conn.cursor()
+
+        # 保存oll-alg
+        for i in range(57):
+            name = f"oll{i+1}"
+            cursor.execute(f'UPDATE ollTable SET alg="{self.oll_table.item(i, 1).text()}" WHERE name="{name}"')
+            conn.commit()
+        # 保存pll-alg
+        for i in range(21):
+            name = self.pll_table.item(i, 0).text()
+            cursor.execute(f'UPDATE pllTable SET alg="{self.pll_table.item(i, 2).text()}" WHERE name="{name}"')
+            conn.commit()
+            i += 1
+        
+        self.info = Info_Dialog()
+        self.info.label.setText("保存成功")
+        self.info.show()
+
+        conn.close()
+
 
     def init_table(self, table_name):
         """表格初始化
@@ -126,10 +148,10 @@ class Alg_window(BasicWindow, Ui_AlgWindow):
                     item2.setIcon(QIcon(icon))
                     self.pll_table.setItem(i, 1, item2)
                     i += 1
-        self.alg_export(table_name)
+        self.alg_show(table_name)
 
 
-    def alg_export(self, table_name):
+    def alg_show(self, table_name):
         """从数据库读取公式并显示在表格上
 
         Args:
@@ -158,11 +180,6 @@ class Alg_window(BasicWindow, Ui_AlgWindow):
                     temp = cursor.fetchall()[0][0]
                     item.setText(temp)
                     self.pll_table.setItem(i, 2, item)
-
-                    item2 = QTableWidgetItem()
-                    icon = QIcon(f"{ABSOLUTE_PATH}\\img\\pll\\{f}")
-                    item2.setIcon(QIcon(icon))
-                    self.pll_table.setItem(i, 1, item2)
                     i += 1
 
         conn.close()

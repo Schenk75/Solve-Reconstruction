@@ -11,3 +11,6 @@
 python sqlite_db.py
 ```
 
+## Reference
+
+- [AlgDb](http://algdb.net/puzzle/333) for all pictures
