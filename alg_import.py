@@ -84,7 +84,7 @@ class Alg_window(BasicWindow, Ui_AlgWindow):
             i += 1
         
         self.info = Info_Dialog()
-        self.info.label.setText("保存成功")
+        self.info.label.setText("Save Successfully")
         self.info.show()
 
         conn.close()

@@ -2,6 +2,7 @@
 
 - Python 3.7.6
 - SQLite3
+- PyQt5
 
 ## Get Start
 

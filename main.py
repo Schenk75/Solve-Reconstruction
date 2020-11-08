@@ -28,8 +28,6 @@ class Main_window(BasicWindow, Ui_MainWindow):
         self.left_buttons = []
 
         self.logo.setPixmap(QPixmap(f'{ABSOLUTE_PATH}/img/WCA.svg').scaled(self.logo.width(), self.logo.height()))  # 添加logo
-        self.refresh_btn.setIcon(QIcon(f'{ABSOLUTE_PATH}/img/refresh.svg'))
-        self.refresh_btn.setIconSize(QSize(25, 25))
         self.doShow()   # 淡入
         self.init_ui()  # 初始化界面
         # index(self.username)
@@ -41,8 +39,6 @@ class Main_window(BasicWindow, Ui_MainWindow):
         Qss += '#add_btn:hover{background-color:%s; border-radius:10px;}' % (FUNC_COLOR)
         Qss += '#edit_btn{background-color:%s; border-radius:10px;}' % (TITLE_COLOR)
         Qss += '#edit_btn:hover{background-color:%s; border-radius:10px;}' % (FUNC_COLOR)
-        Qss += '#refresh_btn{background-color:%s; border-radius:10px;}' % (TITLE_COLOR)
-        Qss += '#refresh_btn:hover{background-color:%s; border-radius:10px;}' % (FUNC_COLOR)
         Qss += global_css()
         self.setStyleSheet(Qss)  # 边框部分qss重载
 
@@ -56,8 +52,6 @@ class Main_window(BasicWindow, Ui_MainWindow):
         self.add_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.edit_btn.clicked.connect(self.show_alg)
         self.edit_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.refresh_btn.clicked.connect(self.init_ui)
-        self.refresh_btn.setCursor(QCursor(Qt.PointingHandCursor))
 
     def init_ui(self):
         """初始化界面
