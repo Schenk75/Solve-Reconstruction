@@ -15,14 +15,15 @@ python sqlite_db.py
 ### Start
 
 ```shell
-python main.py
+python main.py [-n <your username>]
 ```
+
+Or you can add username to 'default' parameter in `parse.add_argument('-n', '--name', help='Please Enter Username', default=' ') ` in main.py and start with `python main.py`
 
 ### Import OLL & PLL Algorithms
 
 - Click "Edit Algs" on top bar;
-- On "Algorithm Editor" window, double click the "Algorithm" column to input your own algs;
-- Click "Save" on top bar.
+- After adding algorithms, click "Save" on top bar.
 
 ### Add Solve
 

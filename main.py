@@ -1,5 +1,6 @@
 import sys
 import sqlite3
+import argparse
 from pprint import pprint
 
 from PyQt5.QtCore import *
@@ -701,9 +702,12 @@ class Input_window(BasicWindow, Ui_InputWindow):
 
 
 if __name__ == "__main__":
+    parse = argparse.ArgumentParser() 
+    parse.add_argument('-n', '--name', help='Please Enter Username', default=' ')                                                                                                
+    args = vars(parse.parse_args())                                                              
     app = QApplication(sys.argv)
 
-    main_window = Main_window('2018SHEN04')
+    main_window = Main_window(args['name'])
     main_window.show()
 
     # main_window = Add_window()
