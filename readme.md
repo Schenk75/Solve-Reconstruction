@@ -31,6 +31,14 @@ Or you can add username to 'default' parameter in `parse.add_argument('-n', '--n
 - Complete the record according to the instructions on "Add Solve" window;
 - Click "Add" on top bar.
 
+## UI
+
+![image-20201113215213356](.readme/image-20201113215213356.png)
+
+![image-20201113215250581](.readme/image-20201113215250581.png)
+
+<img src=".readme/image-20201113215334690.png" alt="image-20201113215334690" style="zoom:67%;" />
+
 ## Reference
 
 - [AlgDb](http://algdb.net/puzzle/333) for all pictures
